@@ -2,7 +2,7 @@
 
 import streamlit as st
 
-st.title("MICHEAL PETERS' Portfolio and Resume")
+st.header("MICHEAL PETERS' Portfolio and Resume")
 
 name = st.text_input('Hi there!!, Whats your name?', 'user')
 
