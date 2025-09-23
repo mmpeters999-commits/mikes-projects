@@ -16,8 +16,8 @@ def get_base64_image(image_path):
 st.header("MICHEAL PETERS' Portfolio and Resume")
 st.markdown("---")
 
-name = st.text_input('Hi there!, What is your name?')
-st.write(f"Hi {name}, welcome to my portfolio and resume.")
+#name = st.text_input('Hi there!, What is your name?')
+#st.write(f"Hi {name}, welcome to my portfolio and resume.")
 
 # --- Create the sidebar for navigation ---
 with st.sidebar:
