@@ -46,7 +46,7 @@ if select_option == "Resume":
     # --- Code to display the profile picture ---
     # NOTE: You must have a file named 'profile_pic.png' in the same directory.
     # Replace 'profile_pic.png' with your actual image filename.
-    profile_image_path = 'My Profile Pics.JPG' 
+    profile_image_path = 'My Profile Pics.jpg' 
     profile_image_base64 = get_base64_image(profile_image_path)
     
     if profile_image_base64:
