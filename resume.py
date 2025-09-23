@@ -9,8 +9,8 @@ def get_base64_image(image_path):
 
 # To use this function, you would need to have the image file locally.
 # Example:
-# profile_image_base64 = get_base64_image("profile_pic.png")
-# st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
+profile_image_base64 = get_base64_image("My Profile Pics.JPG")
+st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
 
 # --- Set up the main page and a simple greeting ---
 st.header("MICHEAL PETERS' Portfolio and Resume")
