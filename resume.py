@@ -2,17 +2,6 @@ import streamlit as st
 import base64
 
 
-# --- Helper function to display local images ---
-def get_base64_image(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
-
-# To use this function, you would need to have the image file locally.
-# Example:
-profile_image_base64 = get_base64_image("My Profile Pics.jpg")
-st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
-
-# --- Set up the main page and a simple greeting ---
 st.header("MICHEAL PETERS' Portfolio and Resume")
 st.markdown("---")
 
@@ -30,41 +19,46 @@ with st.sidebar:
     
     st.markdown("---")
     
-    # You can add a color picker or other settings here if needed
     st.subheader("Settings")
     st.write("Pick a theme color:")
-    st.color_picker("", "#0000FF") # Default color is a nice blue
+    selected_color = st.color_picker("", "#0000FF")
+    st.markdown(f"<h1 style='color:{selected_color};'>My Title</h1>", unsafe_allow_html=True)
     
     st.markdown("---")
     st.subheader("📫 Contact Me")
-    st.markdown("Feel free to reach out via [mmpeters626@gmail.com](mailto:mmpeters626@gmail.com) or connect on [LinkedIn](https://www.linkedin.com/)")
+    st.markdown("Feel free to reach out via [mmpeters626@gmail.com](mailto:mmpeters626@gmail.com) or connect on [https://www.linkedin.com/in/petersmicheal/](https://www.linkedin.com/)")
 
-# --- Display content based on the radio button selection ---
+
 
 if select_option == "Resume":
+    
+    def get_base64_image(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode("utf-8")
+    # To use this function, you would need to have the image file locally.
+    # Example:
+    profile_image_base64 = get_base64_image("My Profile Pics.jpg")
+    st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
+
+   
+    #profile_image_path = 'My Profile Pics.jpg' 
+    #profile_image_base64 = get_base64_image(profile_image_path)
+    
+    #if profile_image_base64:
+        #st.markdown(
+           # f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
+           # unsafe_allow_html=True
+        #)
+        #st.markdown("---") 
+    
     st.title("My Resume")
-    # --- Code to display the profile picture ---
-    # NOTE: You must have a file named 'profile_pic.png' in the same directory.
-    # Replace 'profile_pic.png' with your actual image filename.
-    profile_image_path = 'My Profile Pics.jpg' 
-    profile_image_base64 = get_base64_image(profile_image_path)
-    
-    if profile_image_base64:
-        st.markdown(
-            f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
-            unsafe_allow_html=True
-        )
-        st.markdown("---") # Add a separator after the image
-    
-    
     st.markdown("### MICHEAL PETERS")
     st.markdown(
         """
-        3, Lalubu Street, Okeilewo, Abeokuta, Ogun State, Abeokuta North, Ogun State
-        Phone: 08112398005
-        Email: mmpeters626@gmail.com
-        LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/)
-        Portfolio Website: [Your Portfolio Link](https://www.yourportfolio.com/)
+        - Address: 3, Lalubu Street, Okeilewo, Abeokuta, Ogun State, Abeokuta North, Ogun State
+        - Phone: 08146399129
+        - Email: mmpeters626@gmail.com
+        - LinkedIn: [https://www.linkedin.com/in/petersmicheal/]
         """
     )
     st.markdown("---")
@@ -203,9 +197,9 @@ elif select_option == "About":
     st.markdown("---")
 
     st.markdown("### My Hobbies")
-    st.markdown("- Reading")
-    st.markdown("- Hiking")
-    st.markdown("- Photography")
+    st.markdown("- Studying")
+    st.markdown("- Making Researches")
+    st.markdown("- Praying")
 
 elif select_option == "Contact":
     st.title("Contact")
@@ -218,9 +212,8 @@ elif select_option == "Contact":
     st.markdown(
         """
         - **Email:** mmpeters626@gmail.com
-        - **Phone:** 08112398005
-        - **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/)
-        - **GitHub:** [Your GitHub Profile](https://github.com/)
+        - **Phone:** 08146399129 0r 08112398005
+        - **LinkedIn:** [https://www.linkedin.com/in/petersmicheal/]
         """
     )
 
