@@ -12,15 +12,14 @@ if 'adressed' not in st.session_state:
 
 
 if not st.session_state['is_submitted']:
-    # This form is the first thing the user will see.
+    
     with st.form(key='user_info_form'):
         st.header("WELCOME!! to MICHEAL PETERS' Portfolio and Resume")
-        
-        # These are the input fields.
+       
         name_input = st.text_input('Hi there!, Can you please provide your name😊?')
         adressed_input = st.selectbox('How would you love to be addressed?', options=['Mr', 'Miss', 'Mrs', 'Master', 'Mistress', 'Sir', 'Ma'])
         
-        # This is the submit button for the form.
+       
         submitted = st.form_submit_button("Submit")
 
         if submitted:
@@ -34,12 +33,10 @@ if not st.session_state['is_submitted']:
 
 elif st.session_state['is_submitted']:
     
-    st.header("MICHEAL PETERS' Portfolio and Resume")
-    
     with st.sidebar:
         st.header("MICHEAL PETERS")
      
-        st.write(f" ### Welcome to my portfolio and resume {st.session_state['adressed']} {st.session_state['user_name']}.")
+        st.markdown(f" ### Welcome to my portfolio and resume {st.session_state['adressed']} {st.session_state['user_name']}.")
         
         st.markdown("---")
         
@@ -60,8 +57,9 @@ elif st.session_state['is_submitted']:
     #gender_encoded = gender_mapping[gender]
 
     if select_option == "Resume":
-        
-        st.write(f"Hi {st.session_state['adressed']} {st.session_state['user_name']}!, WELCOME!!! to my resume😍.")
+        st.header("MICHEAL PETERS' Portfolio and Resume")
+    
+        st.subheader(f" Hi {st.session_state['adressed']} {st.session_state['user_name']}!, WELCOME!!! to my resume😍.")
         def get_base64_image(image_path):
             with open(image_path, "rb") as img_file:
                 return base64.b64encode(img_file.read()).decode("utf-8")
@@ -81,6 +79,7 @@ elif st.session_state['is_submitted']:
             #st.markdown("---") 
         
         st.title("My Resume")
+
         st.markdown("### MICHEAL PETERS")
         st.markdown(
             """
@@ -236,7 +235,7 @@ elif st.session_state['is_submitted']:
         st.markdown(
             f"""
             Thank you for visiting my portfolio and resume! {st.session_state['adressed']} {st.session_state['user_name']} 🙏👏🤗🤩
-            Please feel free to connect with me via.
+            feel free to connect with me via.
             """
         )
         st.markdown(
