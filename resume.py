@@ -3,15 +3,14 @@ import base64
 
 
 st.header("MICHEAL PETERS' Portfolio and Resume")
-st.markdown("---")
+name = st.text_input('Hi there!, Can you please provide your name😊?')
+#gender = st.selectbox('Gender?', options=['Male', 'Female']).lower()
+adressed = st.selectbox('How would you love to be addressed?', options=['Mr', 'Miss', 'Mrs', 'Master', 'Mistress', 'Sir', 'Ma'])
 
-#name = st.text_input('Hi there!, What is your name?')
-#st.write(f"Hi {name}, welcome to my portfolio and resume.")
 
-# --- Create the sidebar for navigation ---
 with st.sidebar:
     st.header("MICHEAL PETERS")
-    st.write("Welcome to my portfolio and resume. 😍")
+    st.write(f"Welcome to my portfolio and resume {adressed} {name}.")
     
     st.markdown("---")
     
@@ -28,26 +27,27 @@ with st.sidebar:
     st.subheader("📫 Contact Me")
     st.markdown("Feel free to reach out via [mmpeters626@gmail.com](mailto:mmpeters626@gmail.com) or connect on [https://www.linkedin.com/in/petersmicheal/](https://www.linkedin.com/)")
 
-
+#gender_mapping = {'male': 'Mr', 'female':'Miss'}
+#gender_encoded = gender_mapping[gender]
 
 if select_option == "Resume":
     
+    st.write(f"Hi {adressed} {name}!, WELCOME!!! to my resume😍.")
     def get_base64_image(image_path):
         with open(image_path, "rb") as img_file:
             return base64.b64encode(img_file.read()).decode("utf-8")
-    # To use this function, you would need to have the image file locally.
-    # Example:
+    
     profile_image_base64 = get_base64_image("My Profile Pics.jpg")
     st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
 
-   
+
     #profile_image_path = 'My Profile Pics.jpg' 
     #profile_image_base64 = get_base64_image(profile_image_path)
     
     #if profile_image_base64:
         #st.markdown(
-           # f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
-           # unsafe_allow_html=True
+        # f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
+        # unsafe_allow_html=True
         #)
         #st.markdown("---") 
     
@@ -58,7 +58,7 @@ if select_option == "Resume":
         - Address: 3, Lalubu Street, Okeilewo, Abeokuta, Ogun State, Abeokuta North, Ogun State
         - Phone: 08146399129
         - Email: mmpeters626@gmail.com
-        - LinkedIn: [https://www.linkedin.com/in/petersmicheal/]
+        - LinkedIn: https://www.linkedin.com/in/petersmicheal/
         """
     )
     st.markdown("---")
@@ -145,8 +145,8 @@ if select_option == "Resume":
 elif select_option == "Portfolio":
     st.title("My Portfolio")
     st.markdown(
-        """
-        Welcome to my portfolio! Here you will find some of my key projects and work. 
+        f"""
+        Hi! {adressed} {name} Welcome to my portfolio! Here you will find some of my key projects and work. 
         Each project showcases my skills in data science, machine learning, and data visualization.
         """
     )
@@ -155,28 +155,28 @@ elif select_option == "Portfolio":
     
     st.markdown("#### Customer Churn Prediction App")
     st.write("- Developed a classification model to predict customer churn using Python and Scikit-learn, achieving 85% accuracy /n"
-             "- Performed data cleaning, feature engineering, and model evaluation.")
+            "- Performed data cleaning, feature engineering, and model evaluation.")
     st.markdown("---")
     
     st.markdown("#### Car Prices Prediction App")
     st.write("- Developed a Regression model to predict car prices using Python and Scikit-learn, achieving 81% accuracy /n"
-             "- Performed data cleaning, feature engineering, and model evaluation.")
+            "- Performed data cleaning, feature engineering, and model evaluation.")
     st.markdown("---")
     
     st.markdown("#### Student performance Prediction")
     st.write("- Developed a classification model to predict students perfomances using Python and Scikit-learn, achieving 85% accuracy /n"
-             "- Performed data cleaning, feature engineering, and model evaluation.")
+            "- Performed data cleaning, feature engineering, and model evaluation.")
     st.markdown("---")
     
     st.markdown("#### Diabetes Prediction")
     st.write("- Developed a classification model to predict the tendency of an individual to have diabetes due to some informations/n"
-             "supplied by the individual as requested using Python and Scikit-learn, achieving 85% accuracy /n"
-             "- Performed data cleaning, feature engineering, and model evaluation.")
+            "supplied by the individual as requested using Python and Scikit-learn, achieving 85% accuracy /n"
+            "- Performed data cleaning, feature engineering, and model evaluation.")
     st.markdown("---")
     
     st.markdown("#### Weather App")
     st.write("- Built a Python application using Streamlit to provide real-time weather information for any location worldwide, here is the link to check out the app\n"
-             "https://whether-app-mop.streamlit.app")
+            "https://whether-app-mop.streamlit.app")
     st.markdown("---")
     
     
@@ -185,6 +185,7 @@ elif select_option == "Portfolio":
 
 elif select_option == "About":
     st.title("About Me")
+    st.markdown(f"### Hello {adressed} {name}!!, This a brief overview about me")
     st.markdown(
         """
         I am a passionate and driven aspiring data scientist with a knack for solving problems
@@ -204,24 +205,28 @@ elif select_option == "About":
 elif select_option == "Contact":
     st.title("Contact")
     st.markdown(
-        """
-        Thank you for visiting my portfolio and resume! 
-        Please feel free to connect with me.
+        f"""
+        Thank you for visiting my portfolio and resume! {adressed} {name} 🙏👏🤗🤩
+        Please feel free to connect with me via.
         """
     )
     st.markdown(
         """
         - **Email:** mmpeters626@gmail.com
         - **Phone:** 08146399129 0r 08112398005
-        - **LinkedIn:** [https://www.linkedin.com/in/petersmicheal/]
+        - **LinkedIn:** https://www.linkedin.com/in/petersmicheal/
         """
     )
 
 
+st.markdown("---")
+st.markdown(r"""
+            
+            **_Built Using Python and Streamlit_**
+            """)
+st.markdown("### _Micheal Peters_")
 
-
-
-
+st.markdown("---")
 
 
 
