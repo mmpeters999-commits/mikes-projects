@@ -1,14 +1,13 @@
 import streamlit as st
 import base64
 
-# --- Initialize session state for user information ---
-# This ensures the name and address are remembered as the user navigates
+
 if 'name' not in st.session_state:
     st.session_state.name = None
 if 'addressed' not in st.session_state:
     st.session_state.addressed = None
 
-# --- Helper function to display local images ---
+
 def get_base64_image(image_path):
     try:
         with open(image_path, "rb") as img_file:
@@ -17,13 +16,12 @@ def get_base64_image(image_path):
         st.error(f"Error: The image file '{image_path}' was not found. Please make sure it's in the same directory.")
         return None
 
-# --- Main app title and sidebar navigation ---
+
 st.header("MICHEAL PETERS' Portfolio and Resume")
 
 with st.sidebar:
     st.header("MICHEAL PETERS")
     
-    # Check if name is in session state before displaying the welcome message
     if st.session_state.name and st.session_state.addressed:
         st.write(f"Welcome to my portfolio and resume {st.session_state.addressed} {st.session_state.name}. 👋")
     else:
@@ -43,22 +41,24 @@ with st.sidebar:
     st.subheader("📫 Contact Me")
     st.markdown("Feel free to reach out via [mmpeters626@gmail.com](mailto:mmpeters626@gmail.com) or connect on [https://www.linkedin.com/in/petersmicheal/](https://www.linkedin.com/)")
 
-# --- Display content based on the radio button selection ---
 
-# This is the "first page" where the user inputs their info
 if select_option == "Resume":
-    # Only show input fields if the user hasn't entered their name yet
+    
     if not st.session_state.name:
-       
-        st.session_state.addressed = st.selectbox('How are you addressed?', options=['Mr', 'Miss', 'Mrs', 'Master', 'Mistress', 'Sir', 'Ma'])
-        st.session_state.name = st.text_input('Hi there!, Can you please provide your name😊?')
+        temp_name = st.text_input('Hi there!, Can you please provide your name😊?')
+        temp_addressed = st.selectbox('How are you addressed?', options=['Mr', 'Miss', 'Mrs', 'Master', 'Mistress', 'Sir', 'Ma'])
+        
+        if st.button('Submit'):
+            st.session_state.name = temp_name
+            st.session_state.addressed = temp_addressed
+           
+            st.rerun()
 
-    # Display the welcome message using the stored session state
     if st.session_state.name:
         st.write(f"Hi {st.session_state.addressed} {st.session_state.name}!, WELCOME!!! to my resume😍.")
         st.markdown("---")
     
-    # --- Profile Picture and Resume Content ---
+
     profile_image_path = 'My Profile Pics.jpg' 
     profile_image_base64 = get_base64_image(profile_image_path)
     
