@@ -20,7 +20,7 @@ if not st.session_state['is_submitted']:
         adressed_input = st.selectbox('How would you love to be addressed?', options=['Mr', 'Miss', 'Mrs', 'Master', 'Mistress', 'Sir', 'Ma'])
         
        
-        submitted = st.form_submit_button("Submit")
+        submitted = st.form_submit_button("Enter")
 
         if submitted:
             st.session_state['user_name'] = name_input
@@ -45,7 +45,7 @@ elif st.session_state['is_submitted']:
         st.markdown("---")
         
         st.subheader("Settings")
-        st.write("Pick a theme color:")
+        st.write("Pick a theme coloru3:")
         selected_color = st.color_picker("", "#0000FF")
         st.markdown(f"<h1 style='color:{selected_color};'>My Title</h1>", unsafe_allow_html=True)
         
@@ -57,26 +57,27 @@ elif st.session_state['is_submitted']:
     #gender_encoded = gender_mapping[gender]
 
     if select_option == "Resume":
-        st.header("MICHEAL PETERS' Portfolio and Resume")
+        #st.header("MICHEAL PETERS' Portfolio and Resume")
     
-        st.subheader(f" Hi {st.session_state['adressed']} {st.session_state['user_name']}!, WELCOME!!! to my resume😍.")
         def get_base64_image(image_path):
             with open(image_path, "rb") as img_file:
                 return base64.b64encode(img_file.read()).decode("utf-8")
         
         profile_image_base64 = get_base64_image("My Profile Pics.jpg")
-        st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
+        #st.markdown(f'<img src="data:image/png;base64,{profile_image_base64}" class="profile-img">', unsafe_allow_html=True)
 
 
-        #profile_image_path = 'My Profile Pics.jpg' 
-        #profile_image_base64 = get_base64_image(profile_image_path)
+        profile_image_path = 'My Profile Pics.jpg' 
+        profile_image_base64 = get_base64_image(profile_image_path)
         
-        #if profile_image_base64:
-            #st.markdown(
-            # f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
-            # unsafe_allow_html=True
-            #)
-            #st.markdown("---") 
+        if profile_image_base64:
+            st.markdown(
+            f'<img src="data:image/png;base64,{profile_image_base64}" alt="Michael Peters Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">',
+             unsafe_allow_html=True
+            )
+            st.subheader(f" Hi {st.session_state['adressed']} {st.session_state['user_name']}!, WELCOME!!! to my resume😍.")
+        
+            st.markdown("---") 
         
         st.title("My Resume")
 
@@ -213,7 +214,7 @@ elif st.session_state['is_submitted']:
 
     elif select_option == "About":
         st.title("About Me")
-        st.markdown(f"### Hello {st.session_state['adressed']} {st.session_state['user_name']}!!, This a brief overview about me")
+        st.markdown(f" Hello {st.session_state['adressed']} {st.session_state['user_name']}!!, This a brief overview about me")
         st.markdown(
             """
             I am a passionate and driven aspiring data scientist with a knack for solving problems
