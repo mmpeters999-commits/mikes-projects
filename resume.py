@@ -162,7 +162,7 @@ if select_option == "Resume":
 
 elif select_option == "Portfolio":
     st.title("My Portfolio")
-    # Check if name is in session state before displaying the welcome message
+    
     if st.session_state.name:
         st.markdown(
             f"""
@@ -236,7 +236,7 @@ elif select_option == "Contact":
         st.markdown(
             f"""
             Thank you for visiting my portfolio and resume! {st.session_state.addressed} {st.session_state.name} 🙏👏🤗🤩
-            Please feel free to connect with me via.
+            feel free to connect with me via.
             """
         )
     else:
